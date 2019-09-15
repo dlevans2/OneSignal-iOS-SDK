@@ -29,7 +29,6 @@
 #import "OneSignalInternal.h"
 #import "OneSignalTracker.h"
 #import "OneSignalTrackIAP.h"
-#import "OneSignalLocation.h"
 #import "OneSignalReachability.h"
 #import "OneSignalJailbreakDetection.h"
 #import "OneSignalMobileProvision.h"
@@ -610,9 +609,6 @@ static OneSignalOutcomeEventsController *_outcomeEventsController;
     // Outcomes init
     _outcomeEventFactory = [[OSOutcomeEventsFactory alloc] initWithCache:OneSignal.outcomeEventsCache];
     _outcomeEventsController = [[OneSignalOutcomeEventsController alloc] initWithSessionManager:OneSignal.sessionManager outcomeEventsFactory:_outcomeEventFactory];
-    
-    if (appId && mShareLocation)
-       [OneSignalLocation getLocation:false fallbackToSettings:false withCompletionHandler:nil];
     
     /*
      * No need to call the handleNotificationOpened:userInfo as it will be called from one of the following selectors
@@ -1461,7 +1457,6 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message) {
     
     if (!enable) {
         [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:@"setLocationShared set false, clearing last location!"];
-        [OneSignalLocation clearLastLocation];
     }
 }
 
@@ -1474,7 +1469,6 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message) {
     if ([self shouldLogMissingPrivacyConsentErrorWithMethodName:@"promptLocation"])
         return;
     
-    [OneSignalLocation getLocation:true fallbackToSettings:fallback withCompletionHandler:completionHandler];
 }
 
 + (BOOL)isLocationShared {
@@ -1746,18 +1740,6 @@ static BOOL isOnSessionSuccessfulForCurrentState = false;
     sessionLaunchTime = [NSDate date];
     
     
-    if (mShareLocation && [OneSignalLocation lastLocation]) {
-        [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:@"Attaching device location to 'on_session' request payload"];
-        dataDic[@"lat"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->cords.latitude];
-        dataDic[@"long"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->cords.longitude];
-        dataDic[@"loc_acc_vert"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->verticalAccuracy];
-        dataDic[@"loc_acc"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->horizontalAccuracy];
-    } else
-        [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:@"Not sending location with 'on_session' request payload, setLocationShared is false or lastLocation is null"];
-        
-    // Clear last location after attaching data to payload or not
-    [OneSignalLocation clearLastLocation];
-
     let pushDataDic = (NSMutableDictionary *)[dataDic mutableCopy];
     pushDataDic[@"identifier"] = self.currentSubscriptionState.pushToken;
     
@@ -1850,9 +1832,6 @@ static BOOL isOnSessionSuccessfulForCurrentState = false;
 
             if (tagsToSend)
                 [self performSelector:@selector(sendTagsToServer) withObject:nil afterDelay:5];
-            
-            // try to send location
-            [OneSignalLocation sendLocation];
             
             if (emailToSet) {
                 [OneSignal syncHashedEmail:emailToSet];

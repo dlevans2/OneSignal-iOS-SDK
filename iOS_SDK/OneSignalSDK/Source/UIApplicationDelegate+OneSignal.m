@@ -33,7 +33,6 @@
 #import "OneSignal.h"
 #import "OneSignalCommonDefines.h"
 #import "OneSignalTracker.h"
-#import "OneSignalLocation.h"
 #import "OneSignalSelectorHelpers.h"
 #import "OneSignalHelper.h"
 #import "OSMessagingController.h"

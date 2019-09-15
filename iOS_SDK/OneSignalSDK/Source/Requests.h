@@ -27,7 +27,6 @@
 
 #import <Foundation/Foundation.h>
 #import "OneSignalRequest.h"
-#import "OneSignalLocation.h"
 #import "OSOutcomeEventParams.h"
 #import "OSInAppMessageAction.h"
 #import "OSFocusInfluenceParam.h"
@@ -86,10 +85,6 @@ NS_ASSUME_NONNULL_END
 
 @interface OSRequestSendTagsToServer : OneSignalRequest
 + (instancetype _Nonnull)withUserId:(NSString * _Nonnull)userId appId:(NSString * _Nonnull)appId tags:(NSDictionary * _Nonnull)tags networkType:(NSNumber * _Nonnull)netType withEmailAuthHashToken:(NSString * _Nullable)emailAuthToken withExternalIdAuthHashToken:(NSString * _Nullable)externalIdAuthToken;
-@end
-
-@interface OSRequestSendLocation : OneSignalRequest
-+ (instancetype _Nonnull)withUserId:(NSString * _Nonnull)userId appId:(NSString * _Nonnull)appId location:(os_last_location * _Nonnull)coordinate networkType:(NSNumber * _Nonnull)netType backgroundState:(BOOL)backgroundState emailAuthHashToken:(NSString * _Nullable)emailAuthHash externalIdAuthToken:(NSString * _Nullable)externalIdAuthToken;
 @end
 
 @interface OSRequestBadgeCount : OneSignalRequest
