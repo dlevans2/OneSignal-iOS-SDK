@@ -29,7 +29,6 @@
 #import "OneSignalInternal.h"
 #import "OneSignalTracker.h"
 #import "OneSignalTrackIAP.h"
-#import "OneSignalLocation.h"
 #import "OneSignalReachability.h"
 #import "OneSignalJailbreakDetection.h"
 #import "OneSignalMobileProvision.h"
@@ -458,9 +457,6 @@ static ObservableEmailSubscriptionStateChangesType* _emailSubscriptionStateChang
     
     if (!success)
         return self;
-    
-    if (appId && mShareLocation)
-       [OneSignalLocation getLocation:false];
     
     if (self) {
         [OneSignal checkIfApplicationImplementsDeprecatedMethods];
@@ -1309,7 +1305,6 @@ void onesignal_Log(ONE_S_LOG_LEVEL logLevel, NSString* message) {
     if ([self shouldLogMissingPrivacyConsentErrorWithMethodName:@"promptLocation"])
         return;
     
-    [OneSignalLocation getLocation:true];
 }
 
 
@@ -1568,15 +1563,6 @@ static dispatch_queue_t serialQueue;
     [OneSignal onesignal_Log:ONE_S_LL_VERBOSE message:@"Calling OneSignal create/on_session"];
     
     
-    if (mShareLocation && [OneSignalLocation lastLocation]) {
-        dataDic[@"lat"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->cords.latitude];
-        dataDic[@"long"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->cords.longitude];
-        dataDic[@"loc_acc_vert"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->verticalAccuracy];
-        dataDic[@"loc_acc"] = [NSNumber numberWithDouble:[OneSignalLocation lastLocation]->horizontalAccuracy];
-        [OneSignalLocation clearLastLocation];
-    }
-    
-    
     let pushDataDic = (NSMutableDictionary *)[dataDic mutableCopy];
     pushDataDic[@"identifier"] = self.currentSubscriptionState.pushToken;
     
@@ -1641,9 +1627,6 @@ static dispatch_queue_t serialQueue;
             
             if (tagsToSend)
                 [self performSelector:@selector(sendTagsToServer) withObject:nil afterDelay:5];
-            
-            // try to send location
-            [OneSignalLocation sendLocation];
             
             if (emailToSet) {
                 [OneSignal syncHashedEmail:emailToSet];

@@ -78,10 +78,6 @@
 		9124121E1E73342200E41FD7 /* OneSignalJailbreakDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411F91E73342200E41FD7 /* OneSignalJailbreakDetection.m */; };
 		9124121F1E73342200E41FD7 /* OneSignalJailbreakDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411F91E73342200E41FD7 /* OneSignalJailbreakDetection.m */; };
 		912412201E73342200E41FD7 /* OneSignalJailbreakDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411F91E73342200E41FD7 /* OneSignalJailbreakDetection.m */; };
-		912412211E73342200E41FD7 /* OneSignalLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 912411FA1E73342200E41FD7 /* OneSignalLocation.h */; };
-		912412221E73342200E41FD7 /* OneSignalLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411FB1E73342200E41FD7 /* OneSignalLocation.m */; };
-		912412231E73342200E41FD7 /* OneSignalLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411FB1E73342200E41FD7 /* OneSignalLocation.m */; };
-		912412241E73342200E41FD7 /* OneSignalLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411FB1E73342200E41FD7 /* OneSignalLocation.m */; };
 		912412251E73342200E41FD7 /* OneSignalMobileProvision.h in Headers */ = {isa = PBXBuildFile; fileRef = 912411FC1E73342200E41FD7 /* OneSignalMobileProvision.h */; };
 		912412261E73342200E41FD7 /* OneSignalMobileProvision.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411FD1E73342200E41FD7 /* OneSignalMobileProvision.m */; };
 		912412271E73342200E41FD7 /* OneSignalMobileProvision.m in Sources */ = {isa = PBXBuildFile; fileRef = 912411FD1E73342200E41FD7 /* OneSignalMobileProvision.m */; };
@@ -275,8 +271,6 @@
 		912411F51E73342200E41FD7 /* OneSignalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSignalHelper.m; sourceTree = "<group>"; };
 		912411F81E73342200E41FD7 /* OneSignalJailbreakDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSignalJailbreakDetection.h; sourceTree = "<group>"; };
 		912411F91E73342200E41FD7 /* OneSignalJailbreakDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSignalJailbreakDetection.m; sourceTree = "<group>"; };
-		912411FA1E73342200E41FD7 /* OneSignalLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSignalLocation.h; sourceTree = "<group>"; };
-		912411FB1E73342200E41FD7 /* OneSignalLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSignalLocation.m; sourceTree = "<group>"; };
 		912411FC1E73342200E41FD7 /* OneSignalMobileProvision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSignalMobileProvision.h; sourceTree = "<group>"; };
 		912411FD1E73342200E41FD7 /* OneSignalMobileProvision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneSignalMobileProvision.m; sourceTree = "<group>"; };
 		912411FE1E73342200E41FD7 /* OneSignalReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneSignalReachability.h; sourceTree = "<group>"; };
@@ -517,8 +511,6 @@
 				912411F51E73342200E41FD7 /* OneSignalHelper.m */,
 				912411F81E73342200E41FD7 /* OneSignalJailbreakDetection.h */,
 				912411F91E73342200E41FD7 /* OneSignalJailbreakDetection.m */,
-				912411FA1E73342200E41FD7 /* OneSignalLocation.h */,
-				912411FB1E73342200E41FD7 /* OneSignalLocation.m */,
 				912411FC1E73342200E41FD7 /* OneSignalMobileProvision.h */,
 				912411FD1E73342200E41FD7 /* OneSignalMobileProvision.m */,
 				912411FE1E73342200E41FD7 /* OneSignalReachability.h */,
@@ -625,7 +617,6 @@
 			files = (
 				9124124B1E7337A800E41FD7 /* OneSignal.h in Headers */,
 				CA08FC781FE99B13004C445F /* OneSignalRequest.h in Headers */,
-				912412211E73342200E41FD7 /* OneSignalLocation.h in Headers */,
 				912412291E73342200E41FD7 /* OneSignalReachability.h in Headers */,
 				912412251E73342200E41FD7 /* OneSignalMobileProvision.h in Headers */,
 				91F58D7A1E7C7D3F0017D24D /* OneSignalNotificationSettings.h in Headers */,
@@ -843,7 +834,6 @@
 				91F58D891E7C9A240017D24D /* OneSignalNotificationSettingsIOS7.m in Sources */,
 				CA810FD1202BA97300A60FED /* OSEmailSubscription.m in Sources */,
 				CA63AFC32022670A00E340FB /* ReattemptRequest.m in Sources */,
-				912412221E73342200E41FD7 /* OneSignalLocation.m in Sources */,
 				1AF75EAE1E8567FD0097B315 /* NSString+OneSignal.m in Sources */,
 				454F94F51FAD2E5A00D74CCF /* OSNotificationPayload.m in Sources */,
 				9129C6BE1E89E7AB009CB6A0 /* OSSubscription.m in Sources */,
@@ -886,7 +876,6 @@
 				CA810FD2202BA97600A60FED /* OSEmailSubscription.m in Sources */,
 				CA63AFC42022670A00E340FB /* ReattemptRequest.m in Sources */,
 				91F58D8A1E7C9A240017D24D /* OneSignalNotificationSettingsIOS7.m in Sources */,
-				912412231E73342200E41FD7 /* OneSignalLocation.m in Sources */,
 				1AF75EB01E8569720097B315 /* NSString+OneSignal.m in Sources */,
 				9129C6BF1E89E7AB009CB6A0 /* OSSubscription.m in Sources */,
 				912412371E73342200E41FD7 /* OneSignalTrackIAP.m in Sources */,
@@ -916,7 +905,6 @@
 				CAABF34D205B157B0042F8E5 /* OneSignalExtensionBadgeHandler.m in Sources */,
 				912412301E73342200E41FD7 /* OneSignalSelectorHelpers.m in Sources */,
 				91F58D851E7C88230017D24D /* OneSignalNotificationSettingsIOS10.m in Sources */,
-				912412241E73342200E41FD7 /* OneSignalLocation.m in Sources */,
 				CAA4ED0120646762005BD59B /* BadgeTests.m in Sources */,
 				912412491E73369800E41FD7 /* OneSignalHelper.m in Sources */,
 				CA1A6E7820DC2F04001C41B9 /* OneSignalDialogControllerOverrider.m in Sources */,
